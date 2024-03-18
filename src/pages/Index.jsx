@@ -44,10 +44,33 @@ const Index = () => {
     return sum;
   };
 
+  const initializeLovable = () => {
+    const lovable = [
+      [false, true, false, false, true, false, true, true, true, false, true, false, false, true, false, true, true, true, false],
+      [true, false, true, false, true, false, false, true, false, false, true, false, true, false, true, false, true, false, false],
+      [true, false, true, false, true, false, false, true, false, false, true, false, true, false, true, false, true, false, false],
+      [true, false, true, false, true, false, false, true, false, false, true, false, true, false, true, false, true, false, false],
+      [true, false, true, false, true, false, false, true, false, false, true, false, true, false, true, false, true, false, false],
+      [false, true, false, false, true, true, true, true, true, false, false, true, false, false, true, true, true, true, true],
+    ];
+
+    const gridCopy = [...grid];
+    for (let i = 0; i < lovable.length; i++) {
+      for (let j = 0; j < lovable[i].length; j++) {
+        gridCopy[i + 10][j + 15] = lovable[i][j];
+      }
+    }
+    setGrid(gridCopy);
+  };
+
+  useEffect(() => {
+    initializeLovable();
+  }, []);
+
   return (
     <Box p={4}>
       <Heading as="h1" mb={4}>
-        Lovable Conway's Game of Life
+        Conway's Game of Life
       </Heading>
       <Grid templateColumns={`repeat(${GRID_SIZE}, 1fr)`} gap={0.5} mb={4}>
         {grid.map((rows, i) =>
