@@ -47,17 +47,17 @@ const Index = () => {
   return (
     <Box p={4}>
       <Heading as="h1" mb={4}>
-        Conway's Game of Life
+        Lovable Conway's Game of Life
       </Heading>
       <Grid templateColumns={`repeat(${GRID_SIZE}, 1fr)`} gap={0.5} mb={4}>
         {grid.map((rows, i) =>
           rows.map((col, j) => (
             <GridItem
               key={`${i}-${j}`}
-              w="100%"
-              h="10px"
-              bg={grid[i][j] ? "teal.500" : "gray.100"}
-              _hover={{ bg: "teal.500" }}
+              w="20px"
+              h="20px"
+              bg={grid[i][j] ? "white" : "black"}
+              _hover={{ bg: "white" }}
               onClick={() => {
                 const newGrid = [...grid];
                 newGrid[i][j] = !newGrid[i][j];
