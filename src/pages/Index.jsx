@@ -12,6 +12,7 @@ const Index = () => {
   );
   const [running, setRunning] = useState(false);
   const [speed, setSpeed] = useState(100);
+  const [mouseDown, setMouseDown] = useState(false);
 
   useEffect(() => {
     if (!running) return;
@@ -81,6 +82,15 @@ const Index = () => {
               h="20px"
               bg={grid[i][j] ? "white" : "black"}
               _hover={{ bg: "white" }}
+              onMouseDown={() => setMouseDown(true)}
+              onMouseUp={() => setMouseDown(false)}
+              onMouseEnter={() => {
+                if (mouseDown) {
+                  const newGrid = [...grid];
+                  newGrid[i][j] = true;
+                  setGrid(newGrid);
+                }
+              }}
               onClick={() => {
                 const newGrid = [...grid];
                 newGrid[i][j] = !newGrid[i][j];
